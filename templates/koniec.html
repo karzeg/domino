@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gra</title>
+    <link rel = "stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+{% if koniec_gry %}
+
+    <div class="wygrany">
+        <p class="wyniki">Wygrał gracz {{ wygrany }}</p>
+    </div>
+
+{% else %}
+
+    <div class="wygrany">
+        <p class="wyniki"> Wygrał gracz {{ wygrany }}</p>
+    </div>
+
+{% endif %}
+
+<a href="{{url_for('index')}}"><div class="tryb">Wróć do menu</div></a>
+
+
+</body>
+</html>

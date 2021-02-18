@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <title>Domino</title>
+    <link rel = "stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class = buttons>
+    <div class = "choose-tit"><h1>Wybierz rodzaj gry</h1></div>
+    <a href=" {{ url_for('wypelnij_formularz')  }}"><div class = "two-button"> Graj z przeciwnikiem </div></a>
+</div>
+
+</body>
+</html>
