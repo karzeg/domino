@@ -40,8 +40,27 @@ a
     padding: 1.5em;
 }
 
-.one-button:hover, .two-button:hover, .three-button:hover
+.two-button:hover
 {
     background-color: #e4e4e0;
     color: #161619;
+}
+
+.kostki-gracza
+{
+    display: flex;
+    justify-content: center;
+    overflow: overlay;
+}
+
+.kostki-gracza
+{
+    display: flex;
+    justify-content: center;
+    overflow: overlay;
+}
+
+.kostka
+{
+    list-style-type: none;
 }

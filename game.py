@@ -78,13 +78,13 @@ class Game:
     def zmiana_gracza(self):
         self.turn = (self.turn + 1) % 2
 
-    # rozdanie kart poczatkowych
+    # rozdanie kostek poczatkowych
     def rozdaj_kostki(self):
         for g in range(len(self.gracze)):
             temp_lista = []
             for gg in range(7):
-                print(temp_lista)
                 temp_lista.append(self.wybierz_kostke(self.domino))
+            print(temp_lista)
             gracz = Player(temp_lista)
             self.gracze.append(gracz)
 

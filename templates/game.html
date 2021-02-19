@@ -32,8 +32,8 @@
 </div>
 
 <div class="kostki-gracza">
-    {% for kost in domino_gracza %}
-        <li class="kostki-gracza-reka">{{ kost }}</li>
+    {% for kostka in domino_gracza %}
+        <a href="{{ url_for('wyloz_kostke', kostka=kostka) }}"><li class="kostka">{{ kostka }}</li></a>
     {% endfor %}
 </div>
 
