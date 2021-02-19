@@ -24,25 +24,23 @@ class Game:
                        Tile(5, 5), Tile(5, 6),
                        Tile(6, 6)]
 
-        self.domino_gracza = []
+        random.shuffle(self.domino)
+
         # czyja kolej
-        self.turn = 1
-        # gracze
-        self.gracze = [2]
+        self.turn = 0
         # nazwy graczy
         self.imiona = [gracz_1, gracz_2]
+        # gracze
+        self.gracze = []
+        for i in range(len(self.imiona)):
+            self.gracze.append( Player() )
+            for k in range(7):
+                self.gracze[i].pobierz_kostke(self)
         # czy koniec
         self.koniec = None
         # na stole
         self.na_stole = []
 
-    # zainicjowanie gry
-    def init_game(self):
-        random.shuffle(self.domino)
-        self.na_stole = []
-        self.lista_graczy = self.rozdaj_kostki()
-
-    # rozpoczecie gry
     def start(self, tile=None):
         self.ruch_gracza(tile)
         if self.czy_zakonczyc_gre():
@@ -58,37 +56,21 @@ class Game:
 
     # ruch gracza
     def ruch_gracza(self, tile=None):
-        print(self.gracze)
-        print(self.gracze[self.turn].domino_gracza)
+        print('gracze:', self.gracze)
+        print('tura:', self.turn)
 
         if tile:
-            wybrana_kostka = self.gracze[self.turn].wyloz_kostke(tile)
-            # sprawdza czy mozna polozyc na stole
-            if self.poloz_na_stole(wybrana_kostka):
-                self.poloz_na_stole(wybrana_kostka)
-                self.gracze[self.turn].odrzuc_kostke(wybrana_kostka)
-
-            else:
-                self.dobierz_kostke_ze_stosu()
+            self.poloz_na_stole(self.gracze[self.turn].odrzuc_kostke(tile))
 
         else:
             self.dobierz_kostke_ze_stosu()
+        self.turn = (self.turn + 1) % 2
 
     # zmiana gracza
     def zmiana_gracza(self):
-        self.turn = (self.turn + 1) % 2
+        pass
+        # self.turn = (self.turn + 1) % 2
 
-    # rozdanie kostek poczatkowych
-    def rozdaj_kostki(self):
-        for g in range(len(self.gracze)):
-            temp_lista = []
-            for gg in range(7):
-                temp_lista.append(self.wybierz_kostke(self.domino))
-            print(temp_lista)
-            gracz = Player(temp_lista)
-            self.gracze.append(gracz)
-
-    # dolozenie kostki
     def poloz_na_stole(self, t):
         if not self.na_stole:
             self.na_stole.append(t)
@@ -111,17 +93,7 @@ class Game:
 
     # dobranie z puli
     def dobierz_kostke_ze_stosu(self):
-        # czy pusty stos - jak nie - mozna brac
-        if self.domino != 0:
-            try:
-                self.gracze[self.turn].pobierz_kostke(self.domino)
-                self.domino.pop()
-            except:
-                pass
-
-        # jak pusty - zmiana gracza
-        else:
-            print("deck is empty")
+        self.gracze[self.turn].pobierz_kostke(self)
 
         self.zmiana_gracza()
 
@@ -131,7 +103,7 @@ class Game:
         print('pozostało klocków:', len(self.gracze[1].domino_gracza))
 
         for player_number in range(2):
-            if len(self.gracze[player_number].domino_gracze) == 0:
+            if len(self.gracze[player_number].domino_gracza) == 0:
                 self.koniec = True
                 return True
 
@@ -139,16 +111,19 @@ class Game:
 class Player:
     """ gracz """
 
-    def __init__(self, hand):
-        self.domino_gracza = hand
+    def __init__(self):
+        self.domino_gracza = list()
+
+    def __repr__(self):
+        return str(self.domino_gracza)
 
     # jak to dobieranie zrobić
-    def pobierz_kostke(self):
-        self.domino_gracza.append.wybierz_kostke()
+    def pobierz_kostke(self, g):
+        self.domino_gracza.append(g.wybierz_kostke(g))
 
     # pozbycie sie kostki z reki gracza
     def odrzuc_kostke(self, wybierz_kostke):
-        self.domino_gracza.remove(wybierz_kostke)
+        return self.domino_gracza.pop(wybierz_kostke)
 
     def wyloz_kostke(self, tile):
         for t in self.domino_gracza:

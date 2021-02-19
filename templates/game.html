@@ -26,14 +26,14 @@
 </div>
 
 <div class="na-stole">
-    {% for k in na_stole %}
+    {% for k in gra.na_stole %}
         <li class="kostki-na-stole">{{ k }}</li>
     {% endfor %}
 </div>
 
 <div class="kostki-gracza">
-    {% for kostka in domino_gracza %}
-        <a href="{{ url_for('wyloz_kostke', kostka=kostka) }}"><li class="kostka">{{ kostka }}</li></a>
+    {% for kostka in gra.gracze[gra.turn].domino_gracza %}
+        <a href="{{ url_for('wyloz_kostke', kostka=loop.index0) }}"><li class="kostka">{{ kostka }}</li></a>
     {% endfor %}
 </div>
 
