@@ -9,7 +9,7 @@ class Tile(object):
         self.right = right
 
     def __repr__(self):
-        return '%s|%s' % (self.left, self.right)
+        return '%s | %s' % (self.left, self.right)
 
 
 class Game:
@@ -32,10 +32,12 @@ class Game:
         self.imiona = [gracz_1, gracz_2]
         # gracze
         self.gracze = []
+
         for i in range(len(self.imiona)):
-            self.gracze.append( Player() )
+            self.gracze.append(Player())
             for k in range(7):
                 self.gracze[i].pobierz_kostke(self)
+
         # czy koniec
         self.koniec = None
         # na stole
@@ -93,7 +95,12 @@ class Game:
 
     # dobranie z puli
     def dobierz_kostke_ze_stosu(self):
-        self.gracze[self.turn].pobierz_kostke(self)
+
+        if len(self.domino) != 0:
+            self.gracze[self.turn].pobierz_kostke(self)
+
+        else:
+            self.zmiana_gracza()
 
         self.zmiana_gracza()
 
@@ -117,12 +124,13 @@ class Player:
     def __repr__(self):
         return str(self.domino_gracza)
 
-    # jak to dobieranie zrobić
+    # dobieranie
     def pobierz_kostke(self, g):
         self.domino_gracza.append(g.wybierz_kostke(g))
 
     # pozbycie sie kostki z reki gracza
     def odrzuc_kostke(self, wybierz_kostke):
+        #zwracany jest index
         return self.domino_gracza.pop(wybierz_kostke)
 
     def wyloz_kostke(self, tile):

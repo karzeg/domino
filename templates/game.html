@@ -2,24 +2,24 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Gra</title>
+    <title>Domino</title>
     <link rel = "stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<a href="{{url_for("koniec")}}"><div class="koniec">Przerwij grę</div></a>
+<a href="{{url_for('koniec')}}"><div class="koniec">Przerwij grę</div></a>
 
 <div class="stos">
-    {% if liczba_na_stosie != 0 %}
+    {% if ilosc_na_stosie != 0 %}
     <a href="{{ url_for('dobierz_kostke') }}">
         {% endif %}
         <div>
             <p class="stos">STOS</p>
-            {% if liczba_kart_na_stosie != 0 %}
-            <div class="pobierz-ze-stosu">Pobierz ze stosu</div>
+            {% if ilosc_na_stosie != 0 %}
+                <div class="pobierz-ze-stosu">Pobierz</div>
             {% else %}
-             <div class="pobierz-ze-stosu">Stos jest pusty</div>
+                <div class="pobierz-ze-stosu">Brak</div>
             {% endif %}
         </div>
     </a>
@@ -31,11 +31,17 @@
     {% endfor %}
 </div>
 
-<div class="kostki-gracza">
+<div class="pole-gracza">
+   <div class="kostki-gracza">
     {% for kostka in gra.gracze[gra.turn].domino_gracza %}
-        <a href="{{ url_for('wyloz_kostke', kostka=loop.index0) }}"><li class="kostka">{{ kostka }}</li></a>
+        <a href="{{ url_for('wyloz_kostke', kostka=loop.index0) }}"><ul class="kostka">{{ kostka }}</ul></a>
     {% endfor %}
+    </div>
+    <p class="gracze-napis">
+        Kolej gracza: {{ gra.imiona[gra.turn] }}
+    </p>
 </div>
+
 
 </body>
 </html>

@@ -3,6 +3,7 @@ body
     font-family: 'Montserrat', sans-serif;
     color: #e4e4e0;
     margin: auto;
+    width: 90%;
     font-size: 40px;
     text-align: center;
     background-color: #161619;
@@ -46,21 +47,30 @@ a
     color: #161619;
 }
 
-.kostki-gracza
+.stos
 {
-    display: flex;
-    justify-content: center;
-    overflow: overlay;
+    margin: 1em;
 }
 
 .kostki-gracza
 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    overflow: overlay;
+    margin: auto;
 }
 
 .kostka
 {
+    display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
+    margin: 0.25em;
+    border: 5px solid #e4e4e0;
+    padding: 5px 0.5em;
+}
+
+.kostka:hover
+{
+    transform: scale(1.25);
 }

@@ -41,7 +41,7 @@ def gra():
             return render_template("koniec.html", wygrany=gra.turn)
         return redirect(url_for('gra'))
 
-    return render_template('game.html', gra=gra)
+    return render_template('game.html', gra=gra, ilosc_na_stosie=len(gra.domino))
 
 
 @app.route('/wyloz_kostke/<kostka>')
