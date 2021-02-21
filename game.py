@@ -33,6 +33,7 @@ class Game:
         # gracze
         self.gracze = []
 
+        # rozdanie początkowych kostek
         for i in range(len(self.imiona)):
             self.gracze.append(Player())
             for k in range(7):
@@ -40,7 +41,7 @@ class Game:
 
         # czy koniec
         self.koniec = None
-        # na stole
+        # kostki na stole
         self.na_stole = []
 
     def start(self, tile=None):
@@ -58,8 +59,8 @@ class Game:
 
     # ruch gracza
     def ruch_gracza(self, tile=None):
-        print('gracze:', self.gracze)
-        print('tura:', self.turn)
+        # print('gracze:', self.gracze)
+        # print('tura:', self.turn)
 
         if tile:
             self.poloz_na_stole(self.gracze[self.turn].odrzuc_kostke(tile))
@@ -118,6 +119,7 @@ class Game:
 class Player:
     """ gracz """
 
+    # kostki w ręce gracza
     def __init__(self):
         self.domino_gracza = list()
 
@@ -129,9 +131,9 @@ class Player:
         self.domino_gracza.append(g.wybierz_kostke(g))
 
     # pozbycie sie kostki z reki gracza
-    def odrzuc_kostke(self, wybierz_kostke):
-        #zwracany jest index
-        return self.domino_gracza.pop(wybierz_kostke)
+    def odrzuc_kostke(self, wybrana_kostka):
+        # zwracany jest index
+        return self.domino_gracza.pop(wybrana_kostka)
 
     def wyloz_kostke(self, tile):
         for t in self.domino_gracza:
