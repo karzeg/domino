@@ -4,7 +4,7 @@ body
     color: #e4e4e0;
     margin: auto;
     width: 90%;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     background-color: #161619;
 }
@@ -50,6 +50,12 @@ a
 .stos
 {
     margin: 1em;
+    float: right;
+}
+
+.stos:hover
+{
+    transform: scale(1.25);
 }
 
 .kostki-gracza
@@ -71,6 +77,20 @@ a
 }
 
 .kostka:hover
+{
+    transform: scale(1.25);
+}
+
+.koniec
+{
+    color: white;
+    padding: 10px;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+}
+
+.koniec:hover
 {
     transform: scale(1.25);
 }

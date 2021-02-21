@@ -52,7 +52,7 @@ def wyloz_kostke(kostka):
         flash('Brak pasujacej')
 
     try:
-        gra.ruch_gracza(kostka)
+        gra.ruch_gracza(gra.gracze[gra.turn].domino_gracza.index(kostka))
         gra.czy_zakonczyc_gre()
 
         if gra.koniec:

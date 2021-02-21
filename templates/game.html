@@ -15,11 +15,11 @@
     <a href="{{ url_for('dobierz_kostke') }}">
         {% endif %}
         <div>
-            <p class="stos">STOS</p>
+            <p class="stos"></p>
             {% if ilosc_na_stosie != 0 %}
-                <div class="pobierz-ze-stosu">Pobierz</div>
+                <div class="pobierz-ze-stosu">Dobierz <br> kostkę</div>
             {% else %}
-                <div class="pobierz-ze-stosu">Brak</div>
+                <div class="pobierz-ze-stosu">Pusty</div>
             {% endif %}
         </div>
     </a>

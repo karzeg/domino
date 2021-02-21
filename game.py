@@ -1,7 +1,7 @@
 import random
 
 
-class Tile(object):
+class Tile:
     """ reprezentacja kostki """
 
     def __init__(self, left=0, right=0):
@@ -63,10 +63,12 @@ class Game:
         # print('tura:', self.turn)
 
         if tile:
-            self.poloz_na_stole(self.gracze[self.turn].odrzuc_kostke(tile))
+            tile_ind = self.gracze[self.turn].domino_gracza.index(tile)
+            self.poloz_na_stole(self.gracze[self.turn].odrzuc_kostke(tile_ind))
 
         else:
             self.dobierz_kostke_ze_stosu()
+
         self.turn = (self.turn + 1) % 2
 
     # zmiana gracza
@@ -131,12 +133,6 @@ class Player:
         self.domino_gracza.append(g.wybierz_kostke(g))
 
     # pozbycie sie kostki z reki gracza
-    def odrzuc_kostke(self, wybrana_kostka):
+    def odrzuc_kostke(self, kostka):
         # zwracany jest index
-        return self.domino_gracza.pop(wybrana_kostka)
-
-    def wyloz_kostke(self, tile):
-        for t in self.domino_gracza:
-            if t == tile:
-                return tile
-        raise AssertionError('Brak pasującej kostki')
+        return self.domino_gracza.pop(kostka)
