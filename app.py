@@ -22,7 +22,6 @@ def wypelnij_formularz():
         gracz_2 = form_gracze.gracz_2.data
 
         gra = Game(gracz_1=gracz_1, gracz_2=gracz_2)
-
         return redirect(url_for('gra'))
 
     return render_template('formularz.html', form_gracze=form_gracze)
@@ -52,11 +51,11 @@ def wyloz_kostke(kostka):
         flash('Brak pasujacej')
 
     try:
-        gra.ruch_gracza(gra.gracze[gra.turn].domino_gracza.index(kostka))
+        gra.ruch_gracza(gra.gracze[gra.turn].domino_gracza[int(kostka)])
         gra.czy_zakonczyc_gre()
 
         if gra.koniec:
-            return redirect(url_for('koniec.html'))
+            return redirect(url_for('koniec'))
 
         gra.zmiana_gracza()
 
