@@ -22,6 +22,7 @@ def wypelnij_formularz():
         gracz_2 = form_gracze.gracz_2.data
 
         gra = Game(gracz_1=gracz_1, gracz_2=gracz_2)
+
         return redirect(url_for('gra'))
 
     return render_template('formularz.html', form_gracze=form_gracze)
@@ -37,10 +38,11 @@ def gra():
         gra.start(form.kostka.data)
 
         if gra.koniec:
-            return render_template("koniec.html", wygrany=gra.turn)
+            return render_template("koniec.html", przegrany=gra.turn)
         return redirect(url_for('gra'))
 
-    return render_template('game.html', gra=gra, ilosc_na_stosie=len(gra.domino))
+    return render_template('game.html', gra=gra, ilosc_na_stosie=len(gra.domino),
+                           ilosc_reka=len(gra.gracze[gra.turn].domino_gracza))
 
 
 @app.route('/wyloz_kostke/<kostka>')
@@ -78,12 +80,24 @@ def dobierz_kostke():
 def koniec():
     global gra
 
-    wygrany = gra.imiona[gra.turn]
-    przegrany = gra.imiona[(gra.turn + 1) % 2]
+    # if len(gra.gracze[gra.turn].domino_gracza) < len(gra.gracze[(gra.turn + 1) % 2].domino_gracza):
+
+    if len(gra.gracze[gra.turn].domino_gracza) < len(gra.gracze[(gra.turn + 1) % 2].domino_gracza):
+        wygrany = gra.imiona[gra.turn]
+        wygrany_pkt = len(gra.gracze[gra.turn].domino_gracza)
+        przegrany = gra.imiona[(gra.turn + 1) % 2]
+        przegrany_pkt = len(gra.gracze[(gra.turn + 1) % 2].domino_gracza)
+
+    else:
+        wygrany = gra.imiona[(gra.turn + 1) % 2]
+        wygrany_pkt = len(gra.gracze[(gra.turn + 1) % 2].domino_gracza)
+        przegrany = gra.imiona[gra.turn]
+        przegrany_pkt = len(gra.gracze[gra.turn].domino_gracza)
 
     koniec_gry = gra.koniec
 
-    return render_template('koniec.html', wygrany=wygrany[0], przegrany=przegrany[0], koniec_gry=koniec_gry)
+    return render_template('koniec.html', wygrany=wygrany[0], przegrany=przegrany[0], koniec_gry=koniec_gry,
+                           wygrany_pkt=wygrany_pkt, przegrany_pkt=przegrany_pkt)
 
 
 if __name__ == "__main__":

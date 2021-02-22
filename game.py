@@ -59,8 +59,8 @@ class Game:
 
     # ruch gracza
     def ruch_gracza(self, tile=None):
-        # print('gracze:', self.gracze)
-        # print('tura:', self.turn)
+        print('gracze:', self.gracze)
+        print('tura:', self.turn)
 
         if tile:
             tile_ind = self.gracze[self.turn].domino_gracza.index(tile)

@@ -8,14 +8,13 @@
 </head>
 <body>
 
-<a href="{{url_for('koniec')}}"><div class="koniec">Przerwij grę</div></a>
+<a href="{{url_for('koniec')}}"><div class="koniec">Przerwij<br>grę</div></a>
 
 <div class="stos">
     {% if ilosc_na_stosie != 0 %}
     <a href="{{ url_for('dobierz_kostke') }}">
         {% endif %}
         <div>
-            <p class="stos"></p>
             {% if ilosc_na_stosie != 0 %}
                 <div class="pobierz-ze-stosu">Dobierz <br> kostkę</div>
             {% else %}
@@ -23,12 +22,9 @@
             {% endif %}
         </div>
     </a>
-</div>
-
-<div class="na-stole">
-    {% for k in gra.na_stole %}
-        <li class="kostki-na-stole">{{ k }}</li>
-    {% endfor %}
+    <div class="stos_pozostale">
+        {{ ilosc_na_stosie }}
+    </div>
 </div>
 
 <div class="pole-gracza">
@@ -38,10 +34,15 @@
     {% endfor %}
     </div>
     <p class="gracze-napis">
-        Kolej gracza: {{ gra.imiona[gra.turn] }}
+        Kolej gracza: {{ gra.imiona[gra.turn] }}<br>Pozostało kostek: {{ ilosc_reka }}
     </p>
 </div>
 
+<div class="na-stole">
+    {% for k in gra.na_stole %}
+        <li class="kostki-na-stole">{{ k }}</li>
+    {% endfor %}
+</div>
 
 </body>
 </html>

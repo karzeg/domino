@@ -8,22 +8,33 @@
 </head>
 <body>
 
+<a href="{{url_for('index')}}"><div class="tryb">Wróć do menu</div></a>
+
+<div class="'wyniki">
 {% if koniec_gry %}
 
     <div class="wygrany">
-        <p class="wyniki">Wygrał gracz {{ wygrany }}</p>
+        <p class="wyniki">Wygrał gracz: {{ wygrany }}</p>
+        <p class="punkty">Pozostałe kostki: {{ wygrany_pkt }}</p>
+    </div>
+    <div class="przegrany">
+        <p class="wyniki">Drugi gracz: {{ przegrany }}</p>
+        <p class="punkty">Pozostałe kostki: {{ przegrany_pkt }}</p>
     </div>
 
 {% else %}
 
     <div class="wygrany">
-        <p class="wyniki"> Wygrał gracz {{ wygrany }}</p>
+        <p class="wyniki">Wygrał gracz: {{ wygrany }}</p>
+        <p class="punkty">Pozostałe kostki: {{ wygrany_pkt }}</p>
+    </div>
+    <div class="przegrany">
+        <p class="wyniki">Drugi gracz: {{ przegrany }}</p>
+        <p class="punkty">Pozostałe kostki: {{ przegrany_pkt }}</p>
     </div>
 
 {% endif %}
-
-<a href="{{url_for('index')}}"><div class="tryb">Wróć do menu</div></a>
-
+</div>
 
 </body>
 </html>
