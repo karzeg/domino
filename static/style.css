@@ -17,7 +17,7 @@ h1
 .buttons
 {
     background-color: #1b1b1f;
-    margin: 0.5em auto auto;
+    margin: 3em auto;
     padding: 1em;
     width: 80%;
     height: 100%;
@@ -25,7 +25,7 @@ h1
 
 .choose-tit
 {
-    margin: 1em;
+    margin: 2em;
 }
 
 a
@@ -34,9 +34,9 @@ a
     color: #FFFFFF;
 }
 
-.one-button, .two-button, .three-button
+.two-button
 {
-    margin: auto 1.5em;
+    margin: 1.5em;
     padding: 1.5em;
 }
 
@@ -121,22 +121,67 @@ a
 
 .tryb
 {
-    display: block;
+    background-color: #161619;
     padding: 10px;
-    text-align: center;
-    float: left;
-    margin: 1em 2em;
+    text-align: left;
+    margin: 2em 5em;
+    width: 40%;
 }
 
 .tryb:hover
 {
-    transform: scale(1.25);
+    transform: scale(1.2);
     font-weight: bold;
-    position: relative;
 }
 
 .pole-gracza
 {
     text-align: center;
-    margin: auto;
+    margin: 1.5em auto;
+    background-color: #1b1b1f;
+    padding: 1em;
+}
+
+.wygrany, .przegrany
+{
+    background-color: #1b1b1f;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.form
+{
+    background-color: #1b1b1f;
+    width: 80%;
+    padding: 1.5em 1.5em 2.2em;
+    margin: 3em auto;
+}
+
+.imiona-form
+{
+    text-align: center;
+    font-size: 45px;
+}
+
+.form-group
+{
+    border: none;
+}
+
+.btn
+{
+    margin: 2em;
+    height: 30px;
+    font-size: 22px;
+}
+.btn:hover
+{
+    transform: scale(1.25);
+}
+
+.form-control
+{
+    height: 40px;
+    width: 250px;
+    margin: 5px;
 }

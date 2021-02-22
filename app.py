@@ -57,7 +57,7 @@ def wyloz_kostke(kostka):
         gra.czy_zakonczyc_gre()
 
         if gra.koniec:
-            return redirect(url_for('koniec'))
+            return redirect(url_for('koniec_gry'))
 
         gra.zmiana_gracza()
 
@@ -77,7 +77,7 @@ def dobierz_kostke():
 
 
 @app.route('/koniec_gry')
-def koniec():
+def koniec_gry():
     global gra
 
     # if len(gra.gracze[gra.turn].domino_gracza) < len(gra.gracze[(gra.turn + 1) % 2].domino_gracza):
